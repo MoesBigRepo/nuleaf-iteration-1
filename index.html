@@ -1355,13 +1355,25 @@ section { position: relative; }
 /* ——————————————————————————————————— Final CTA */
 .final-cta {
   position: relative;
-  padding: clamp(64px, 8vw, 112px) 0;
+  min-height: 100vh;        /* fallback */
+  min-height: 100dvh;       /* iOS-safe */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(56px, 8vh, 112px) 0;
   text-align: center;
   background:
     radial-gradient(ellipse 60% 50% at 50% 50%, rgba(46,154,139,0.18), transparent 70%),
     linear-gradient(180deg, var(--bg) 0%, var(--bg-2) 100%);
   overflow: hidden;
   isolation: isolate;
+}
+.final-cta .container.narrow {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: clamp(16px, 2vh, 26px);
 }
 
 .final-cta::before {
@@ -1387,7 +1399,7 @@ section { position: relative; }
   background: rgba(143, 214, 88, 0.08);
   border: 1px solid rgba(143, 214, 88, 0.25);
   border-radius: 999px;
-  margin-bottom: 28px;
+  margin: 0;
 }
 .final-cta-eyebrow .dot {
   width: 6px;
@@ -1397,7 +1409,7 @@ section { position: relative; }
   box-shadow: 0 0 8px var(--lime);
 }
 .final-cta h2 {
-  margin-bottom: 18px;
+  margin: 0;
   background: linear-gradient(180deg, #ffffff 0%, #c5c7cb 100%);
   -webkit-background-clip: text;
   background-clip: text;
@@ -1408,7 +1420,7 @@ section { position: relative; }
   color: #b0b3b8;
   font-size: clamp(1.05rem, 1.5vw, 1.2rem);
   max-width: 580px;
-  margin: 0 auto 32px;
+  margin: 0 auto;
   line-height: 1.55;
 }
 .final-cta-trust {
@@ -1417,7 +1429,7 @@ section { position: relative; }
   justify-content: center;
   flex-wrap: wrap;
   gap: 10px 14px;
-  margin-top: 36px;
+  margin: 0;
   font-family: var(--mono);
   font-size: 0.78rem;
   letter-spacing: 0.04em;
@@ -1444,6 +1456,171 @@ section { position: relative; }
   }
   .final-cta-trust .tb-sep {
     display: none;
+  }
+}
+
+/* Final CTA: cost framing line */
+.final-cta-cost {
+  font-family: var(--mono);
+  font-size: clamp(0.92rem, 1.2vw, 1.05rem);
+  color: #c5c7cb;
+  letter-spacing: 0.01em;
+  margin: 0;
+}
+.final-cta-cost .num {
+  color: var(--lime);
+  font-weight: 700;
+}
+
+/* Final CTA: two-step button row */
+.final-cta-actions {
+  display: inline-flex;
+  align-items: center;
+  gap: 18px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 22px;
+  border-radius: 999px;
+  border: 1px solid rgba(143, 214, 88, 0.45);
+  background: rgba(143, 214, 88, 0.04);
+  color: var(--lime);
+  font-family: var(--display);
+  font-weight: 600;
+  font-size: 14.5px;
+  text-decoration: none;
+  transition: background 200ms ease, border-color 200ms ease, transform 200ms ease;
+}
+.btn-ghost:hover {
+  background: rgba(143, 214, 88, 0.10);
+  border-color: rgba(143, 214, 88, 0.7);
+  transform: translateY(-2px);
+}
+
+/* Final CTA: risk-reversal block */
+.final-cta-guarantee {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  max-width: 620px;
+  padding: 16px 22px;
+  border: 1px solid rgba(143, 214, 88, 0.35);
+  border-radius: 18px;
+  background: linear-gradient(180deg, rgba(143,214,88,0.06) 0%, rgba(143,214,88,0.02) 100%);
+  color: #c5c7cb;
+  text-align: left;
+  font-size: 0.95rem;
+  line-height: 1.55;
+}
+.final-cta-guarantee .shield {
+  flex: 0 0 auto;
+  width: 32px; height: 32px;
+  display: inline-flex; align-items: center; justify-content: center;
+  border-radius: 50%;
+  background: rgba(143, 214, 88, 0.12);
+  color: var(--lime);
+}
+.final-cta-guarantee strong {
+  color: #ffffff;
+  font-family: var(--display);
+  font-weight: 700;
+  letter-spacing: -0.005em;
+}
+
+/* Final CTA: social proof */
+.final-cta-quote {
+  max-width: 580px;
+  margin: 0;
+  font-style: italic;
+  color: #d4d6da;
+  font-size: clamp(0.98rem, 1.3vw, 1.1rem);
+  line-height: 1.6;
+}
+.final-cta-quote .stars {
+  display: inline-flex;
+  gap: 3px;
+  color: var(--lime);
+  font-style: normal;
+  letter-spacing: 0.08em;
+  margin-bottom: 8px;
+  font-size: 0.92rem;
+}
+.final-cta-quote .attrib {
+  display: block;
+  margin-top: 10px;
+  font-style: normal;
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #8e9196;
+}
+
+/* Final CTA: trust badges row (replaces .final-cta-trust visually) */
+.final-cta-badges {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 0;
+}
+.final-cta-badges .chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  border: 1px solid rgba(255,255,255,0.10);
+  border-radius: 999px;
+  background: rgba(255,255,255,0.025);
+  font-family: var(--mono);
+  font-size: 0.74rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #b0b3b8;
+}
+.final-cta-badges .chip .tick {
+  color: var(--lime);
+  font-weight: 800;
+}
+
+@media (max-width: 640px) {
+  .final-cta-actions { flex-direction: column; gap: 12px; }
+  .final-cta-guarantee { padding: 14px 18px; font-size: 0.9rem; }
+  .final-cta-badges { gap: 8px; }
+}
+
+/* Final CTA: restrained button motion */
+@keyframes ctaPulse {
+  0%, 100% {
+    box-shadow:
+      0 0 0 0 rgba(143, 214, 88, 0.32),
+      0 12px 24px -8px rgba(143, 214, 88, 0.18);
+  }
+  50% {
+    box-shadow:
+      0 0 0 14px rgba(143, 214, 88, 0),
+      0 18px 32px -8px rgba(143, 214, 88, 0.28);
+  }
+}
+@keyframes arrowNudge {
+  0%, 100% { transform: translateX(0); }
+  50%      { transform: translateX(4px); }
+}
+.final-cta .btn-primary {
+  animation: ctaPulse 2.4s ease-in-out infinite;
+}
+.final-cta .btn-primary .arrow {
+  animation: arrowNudge 1.6s ease-in-out infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .final-cta .btn-primary,
+  .final-cta .btn-primary .arrow {
+    animation: none;
   }
 }
 
@@ -1821,16 +1998,36 @@ footer {
   <div class="container narrow">
     <span class="final-cta-eyebrow"><span class="dot"></span> Ready When You Are</span>
     <h2>You've waited long enough.</h2>
-    <p>Twelve months from now you can be telling this story to a friend — or still waiting for the wait to end. Enrollment is open, we handle 95% of the work, and you get back to living.</p>
-    <a class="btn btn-primary btn-lg" href="https://nuleaffinance.com/onboarding">Start Fixing My Credit <span class="arrow">→</span></a>
-    <div class="final-cta-trust">
-      <span><span class="tb-check">✓</span> 12-month program</span>
-      <span class="tb-sep">·</span>
-      <span><span class="tb-check">✓</span> $147 / month</span>
-      <span class="tb-sep">·</span>
-      <span><span class="tb-check">✓</span> 6-month money-back guarantee</span>
-      <span class="tb-sep">·</span>
-      <span><span class="tb-check">✓</span> Cancel anytime</span>
+    <p>Twelve months from now, you can be telling this story to a friend. Or still waiting for the wait to end. Enrollment is open, we handle 95% of the work, and you get back to living.</p>
+
+    <p class="final-cta-cost"><span class="num">$147/mo</span> = <span class="num">$4.83/day</span>. Less than a coffee, for the life you actually want.</p>
+
+    <div class="final-cta-actions">
+      <a class="btn btn-primary btn-lg" href="https://nuleaffinance.com/onboarding">Start Fixing My Credit <span class="arrow">→</span></a>
+      <a class="btn-ghost" href="mailto:hello@nuleaffinance.com?subject=Talk%20to%20a%20strategist">Talk to a strategist first</a>
+    </div>
+
+    <div class="final-cta-guarantee">
+      <span class="shield" aria-hidden="true">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 2 4 5v6c0 5 3.5 9 8 11 4.5-2 8-6 8-11V5l-8-3z"/>
+          <path d="m9 12 2 2 4-4"/>
+        </svg>
+      </span>
+      <span><strong>6-Month Money-Back Guarantee.</strong> If you don't see real progress in 6 months, you get every dollar back. The risk is ours.</span>
+    </div>
+
+    <blockquote class="final-cta-quote">
+      <span class="stars" aria-label="5 out of 5 stars">★★★★★</span>
+      "They lifted me 87 points in 9 months. I stopped checking my report with dread."
+      <span class="attrib">Marcus T. · NuLeaf client</span>
+    </blockquote>
+
+    <div class="final-cta-badges" role="list">
+      <span class="chip" role="listitem"><span class="tick">✓</span> BBB Accredited</span>
+      <span class="chip" role="listitem"><span class="tick">✓</span> 256-bit Secure</span>
+      <span class="chip" role="listitem"><span class="tick">✓</span> CROA-Compliant</span>
+      <span class="chip" role="listitem"><span class="tick">✓</span> Cancel Anytime</span>
     </div>
   </div>
 </section>
