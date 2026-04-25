@@ -1364,28 +1364,6 @@ section { position: relative; }
   isolation: isolate;
 }
 
-/* Soft fade from paper section above into the dark final CTA — kills the harsh white seam */
-section.section-paper:has(+ section.final-cta) {
-  position: relative;
-}
-section.section-paper:has(+ section.final-cta)::after {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: clamp(180px, 22vh, 280px);
-  background: linear-gradient(
-    180deg,
-    rgba(8, 9, 11, 0) 0%,
-    rgba(8, 9, 11, 0.04) 25%,
-    rgba(8, 9, 11, 0.18) 55%,
-    rgba(8, 9, 11, 0.55) 80%,
-    var(--bg) 100%
-  );
-  pointer-events: none;
-  z-index: 1;
-}
 .final-cta::before {
   content: "";
   position: absolute;
