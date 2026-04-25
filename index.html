@@ -1360,7 +1360,7 @@ section { position: relative; }
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: clamp(56px, 8vh, 112px) 0;
+  padding: clamp(124px, 16vh, 170px) 0 clamp(56px, 8vh, 112px);
   text-align: center;
   background:
     radial-gradient(ellipse 60% 50% at 50% 50%, rgba(46,154,139,0.18), transparent 70%),
@@ -1480,27 +1480,6 @@ section { position: relative; }
   flex-wrap: wrap;
   justify-content: center;
 }
-.btn-ghost {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 14px 22px;
-  border-radius: 999px;
-  border: 1px solid rgba(143, 214, 88, 0.45);
-  background: rgba(143, 214, 88, 0.04);
-  color: var(--lime);
-  font-family: var(--display);
-  font-weight: 600;
-  font-size: 14.5px;
-  text-decoration: none;
-  transition: background 200ms ease, border-color 200ms ease, transform 200ms ease;
-}
-.btn-ghost:hover {
-  background: rgba(143, 214, 88, 0.10);
-  border-color: rgba(143, 214, 88, 0.7);
-  transform: translateY(-2px);
-}
-
 /* Final CTA: risk-reversal block */
 .final-cta-guarantee {
   display: inline-flex;
@@ -2004,7 +1983,6 @@ footer {
 
     <div class="final-cta-actions">
       <a class="btn btn-primary btn-lg" href="https://nuleaffinance.com/onboarding">Start Fixing My Credit <span class="arrow">→</span></a>
-      <a class="btn-ghost" href="mailto:hello@nuleaffinance.com?subject=Talk%20to%20a%20strategist">Talk to a strategist first</a>
     </div>
 
     <div class="final-cta-guarantee">
